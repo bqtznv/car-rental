@@ -95,7 +95,7 @@
 			"isa" = "PBXFileReference";
 			"explicitFileType" = "wrapper.application";
 			"includeInIndex" = 0;
-			"path" = "OpenRoad.app";
+			"path" = "CarRental.app";
 			"sourceTree" = "BUILT_PRODUCTS_DIR";
 		};
 		"E05FCB614AB36FDEE72EE1F2" = {
@@ -306,7 +306,7 @@
 				"CURRENT_PROJECT_VERSION" = "1";
 				"MARKETING_VERSION" = "1.0";
 				"GENERATE_INFOPLIST_FILE" = "YES";
-				"TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/OpenRoad.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OpenRoad";
+				"TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/CarRental.app/CarRental";
 				"BUNDLE_LOADER" = "$(TEST_HOST)";
 			};
 			"name" = "Debug";
@@ -328,7 +328,7 @@
 				"CURRENT_PROJECT_VERSION" = "1";
 				"MARKETING_VERSION" = "1.0";
 				"GENERATE_INFOPLIST_FILE" = "YES";
-				"TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/OpenRoad.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OpenRoad";
+				"TEST_HOST" = "$(BUILT_PRODUCTS_DIR)/CarRental.app/CarRental";
 				"BUNDLE_LOADER" = "$(TEST_HOST)";
 			};
 			"name" = "Release";
@@ -354,8 +354,8 @@
 			);
 			"dependencies" = (
 			);
-			"name" = "OpenRoad";
-			"productName" = "OpenRoad";
+			"name" = "CarRental";
+			"productName" = "CarRental";
 			"productReference" = "38A007151ABE87CC01A5B6E9";
 			"productType" = "com.apple.product-type.application";
 		};
@@ -364,7 +364,7 @@
 			"containerPortal" = "98F54143AB4E86B28C3AFEE0";
 			"proxyType" = 1;
 			"remoteGlobalIDString" = "7D1043473D55BFA90E8530D3";
-			"remoteInfo" = "OpenRoad";
+			"remoteInfo" = "CarRental";
 		};
 		"E9FAD0C6CD43534327C0AF90" = {
 			"isa" = "PBXTargetDependency";

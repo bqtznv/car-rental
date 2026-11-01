@@ -15,8 +15,8 @@ if len(devices)!=1:
 print(devices[0]["udid"])
 ')"
 xcrun simctl bootstatus "$SIMULATOR_ID" -b
-xcodebuild -project CarRental.xcodeproj -scheme OpenRoad -configuration Debug \
+xcodebuild -project CarRental.xcodeproj -scheme CarRental -configuration Debug \
   -destination "platform=iOS Simulator,id=$SIMULATOR_ID" \
   -derivedDataPath build/DerivedData CODE_SIGNING_ALLOWED=NO test
-xcrun simctl install "$SIMULATOR_ID" build/DerivedData/Build/Products/Debug-iphonesimulator/OpenRoad.app
+xcrun simctl install "$SIMULATOR_ID" build/DerivedData/Build/Products/Debug-iphonesimulator/CarRental.app
 xcrun simctl launch "$SIMULATOR_ID" com.example.openroad

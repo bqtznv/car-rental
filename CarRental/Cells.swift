@@ -50,7 +50,7 @@ final class CarCardCell: UICollectionViewCell {
         price.text = car.dailyPrice
         heart.isHidden = !favorite
         accessibilityLabel = "\(car.name), \(car.category.rawValue), \(car.dailyPrice)\(favorite ? ", saved" : "")"
-        accessibilityHint = "Opens rental details. Touch and hold for save options."
+        accessibilityHint = "Opens car details. Hold for save options."
     }
 
     override func prepareForReuse() {
@@ -92,7 +92,7 @@ final class FleetCell: UITableViewCell {
         icon.tintColor = car.color
         icon.backgroundColor = car.color.withAlphaComponent(0.12)
         accessibilityLabel = "\(car.name), \(car.seats) seats, \(car.range), \(car.dailyPrice)\(favorite ? ", saved" : "")"
-        accessibilityHint = "Opens rental details. Swipe for save or remove."
+        accessibilityHint = "Opens car details. Swipe to save or remove."
         isAccessibilityElement = true
     }
 }
@@ -117,7 +117,7 @@ final class CollectionHeader: UICollectionReusableView {
     required init?(coder: NSCoder) { fatalError("Programmatic UI only") }
 
     func configure(count: Int) {
-        title.text = "Find your next drive."
-        subtitle.text = "\(count) cars · One great escape.\nSample daily rates in USD."
+        title.text = "Choose a car"
+        subtitle.text = "\(count) cars · Prices per day in KZT."
     }
 }

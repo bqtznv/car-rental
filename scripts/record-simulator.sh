@@ -6,9 +6,9 @@ if [[ "$(uname -s)" != Darwin ]]; then
   exit 1
 fi
 mkdir -p build
-if [[ -e build/OpenRoad-demo.mp4 ]]; then
-  echo 'Preserving existing build/OpenRoad-demo.mp4. Move or rename it before recording again.' >&2
+if [[ -e build/CarRental-demo.mp4 ]]; then
+  echo 'Preserving existing build/CarRental-demo.mp4. Move or rename it before recording again.' >&2
   exit 1
 fi
 echo 'Recording the booted simulator. Press Control-C to finish and finalize the MP4.'
-exec xcrun simctl io booted recordVideo --codec=h264 build/OpenRoad-demo.mp4
+exec xcrun simctl io booted recordVideo --codec=h264 build/CarRental-demo.mp4

@@ -1,6 +1,6 @@
 import XCTest
 import UIKit
-@testable import OpenRoad
+@testable import CarRental
 
 final class FleetStoreTests: XCTestCase {
     private let store = FleetStore.shared
@@ -91,7 +91,7 @@ final class AppLaunchTests: XCTestCase {
                   let explore = exploreNavigation.viewControllers.first as? ExploreViewController,
                   let fleetNavigation = tabs.viewControllers?.last as? UINavigationController,
                   let fleet = fleetNavigation.viewControllers.first as? FleetViewController else {
-                XCTFail("Both Explore and Fleet must be reachable from the root tabs.")
+                XCTFail("Both Cars and Car list must be reachable from the root tabs.")
                 return
             }
             explore.loadViewIfNeeded()

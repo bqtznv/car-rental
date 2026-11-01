@@ -1,4 +1,4 @@
-# Open Road — UIKit car rental demo
+# Car Rental — UIKit app
 
 A programmatic Swift/UIKit iOS app with a 12-car collection catalog and a 12-row, three-section fleet table. No SwiftUI, storyboard, third-party dependencies, API keys, or backend services are used.
 
@@ -7,7 +7,7 @@ A programmatic Swift/UIKit iOS app with a 12-car collection catalog and a 12-row
 Requires **macOS, Xcode 16 or newer, and an installed iOS Simulator runtime**. The minimum deployment target is iOS 16.0. Supports iPhone, iPad, light/dark appearance, rotation, and Dynamic Type.
 
 1. Open `CarRental.xcodeproj`.
-2. Select the shared **OpenRoad** scheme and an available iPhone simulator.
+2. Select the shared **CarRental** scheme and an available iPhone simulator.
 3. Press **⌘R**. No signing team is needed for the simulator.
 4. Press **⌘U** to run seven tests: six `FleetStoreTests` model tests and one `AppLaunchTests` startup check.
 
@@ -15,13 +15,13 @@ For a physical device, select your own signing team under Signing & Capabilities
 
 ## Features
 
-- **Explore:** responsive collection grid, category filters, result-count header, long-press save menu, and press feedback.
-- **Fleet:** self-sizing table cells grouped by category, leading swipe to save, trailing swipe to remove, and Edit mode to delete or reorder within a category.
-- **Details:** car specifications, save button, 1–14 day duration stepper, live price estimate, and reservation preview alert.
-- **Restore:** resets the demo fleet after deleting cars, including after deleting every car. Both tabs share the same model.
+- **Cars:** responsive collection grid, category filters, result-count header, long-press save menu, and press feedback.
+- **Car list:** self-sizing table cells grouped by category, leading swipe to save, trailing swipe to remove, and Edit mode to delete or reorder within a category.
+- **Details:** car info, save button, number of days (1–14), total price, and a rental summary.
+- **Reset:** resets the demo fleet after deleting cars, including after deleting every car. Both tabs share the same model.
 - **Accessibility:** descriptive VoiceOver labels, scalable text, larger grid cards for accessibility sizes, semantic colors, and Reduce Motion support.
 
-All data is illustrative and in memory. Relaunching resets changes. Reservation previews do not create real bookings or charges. Each screen starts with all 12 vehicles; applying a category filter or removing cars intentionally reduces the visible count.
+Prices are examples in Kazakhstani tenge (KZT), set directly in KZT. For example, MINI Cooper costs 25 000 KZT per day, or 75 000 KZT for three days. There is no live currency conversion. No real bookings or payments are made. Changes reset when the app restarts. Both screens start with 12 cars; choosing a car type or removing cars shows fewer cars.
 
 ## Assignment evidence
 
@@ -33,9 +33,9 @@ The `CarRentalTests` target includes six model tests covering initial data, favo
 
 Startup uses `SceneDelegate` to attach a retained `UIWindow` to the active `UIWindowScene`. The scene delegate is registered both in `Info.plist` and through `AppDelegate`'s scene configuration callback; no storyboard is required.
 
-If you ran the earlier version that only created a window in `AppDelegate`, download the updated project or pull the latest commit. Open its `CarRental.xcodeproj`, remove the old Open Road app from the simulator, choose **Product → Clean Build Folder** (**⇧⌘K**), then run again with **⌘R**. Reinstalling clears any saved launch/scene configuration from the old build; the app only contains resettable demo data.
+If you ran the earlier version that only created a window in `AppDelegate`, download the updated project or pull the latest commit. Open its `CarRental.xcodeproj`, remove the old app from the simulator, choose **Product → Clean Build Folder** (**⇧⌘K**), then run again with **⌘R**. Reinstalling clears any saved launch/scene configuration from the old build; the app only contains resettable demo data.
 
-For a Debug build, the Xcode console should report `OpenRoad: connected window to application scene.` If the screen remains blank, capture the console messages from launch together with your Xcode and simulator iOS versions so the remaining failure can be diagnosed.
+For a Debug build, the Xcode console should report `Car Rental: connected window to application scene.` If the screen remains blank, capture the console messages from launch together with your Xcode and simulator iOS versions so the remaining failure can be diagnosed.
 
 ## Build, test, and record on a Mac
 
@@ -46,7 +46,7 @@ bash scripts/build-and-test.sh
 bash scripts/record-simulator.sh
 ```
 
-The first script builds, runs XCTest, installs, and launches the app. The second records the booted simulator to `build/OpenRoad-demo.mp4`. Follow [the recording walkthrough](Docs/SimulatorRecording.md), then press **Control-C** to finalize the recording. Attach that MP4 alongside the project ZIP when submitting.
+The first script builds, runs XCTest, installs, and launches the app. The second records the booted simulator to `build/CarRental-demo.mp4`. Follow [the recording walkthrough](Docs/SimulatorRecording.md), then press **Control-C** to finalize the recording. Attach that MP4 alongside the project ZIP when submitting.
 
 ## Validation status
 

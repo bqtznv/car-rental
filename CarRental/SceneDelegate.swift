@@ -16,16 +16,16 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
 
         #if DEBUG
-        NSLog("OpenRoad: connected window to application scene.")
+        NSLog("Car Rental: connected window to application scene.")
         #endif
     }
 
     private func makeRootViewController() -> UITabBarController {
         let tabs = UITabBarController()
         let explore = UINavigationController(rootViewController: ExploreViewController())
-        explore.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(systemName: "square.grid.2x2"), tag: 0)
+        explore.tabBarItem = UITabBarItem(title: "Cars", image: UIImage(systemName: "square.grid.2x2"), tag: 0)
         let fleet = UINavigationController(rootViewController: FleetViewController())
-        fleet.tabBarItem = UITabBarItem(title: "Fleet", image: UIImage(systemName: "list.bullet.rectangle"), tag: 1)
+        fleet.tabBarItem = UITabBarItem(title: "Car list", image: UIImage(systemName: "list.bullet.rectangle"), tag: 1)
         tabs.viewControllers = [explore, fleet]
         tabs.tabBar.tintColor = Theme.accent
         let bar = UITabBarAppearance()

@@ -31,17 +31,17 @@ final class CarDetailViewController: UIViewController {
         let title = Theme.label(car.name, style: .largeTitle)
         let tagline = Theme.label(car.tagline, style: .title3, color: .secondaryLabel)
         let specs = Theme.label("\(car.category.rawValue) · \(car.seats) seats\n\(car.range)\n\(car.dailyPrice)", style: .body)
-        let included = Theme.label("Included in this demo quote\n• 200 km per day\n• Basic roadside assistance\n• Flexible pickup at the city center", style: .body, color: .secondaryLabel)
+        let included = Theme.label("Included\n• 200 km per day\n• Roadside help\n• Pickup in the city center", style: .body, color: .secondaryLabel)
         days.minimumValue = 1
         days.maximumValue = 14
         days.value = 1
         days.addTarget(self, action: #selector(updateQuote), for: .valueChanged)
-        days.accessibilityLabel = "Rental duration, in days"
+        days.accessibilityLabel = "Number of days"
         let duration = Theme.stack([durationLabel, days], spacing: 16, axis: .horizontal)
         duration.alignment = .center
         let reserve = UIButton(type: .system)
         var config = UIButton.Configuration.filled()
-        config.title = "Preview reservation"
+        config.title = "View total"
         config.image = UIImage(systemName: "arrow.right")
         config.imagePlacement = .trailing
         config.imagePadding = 10
@@ -50,7 +50,7 @@ final class CarDetailViewController: UIViewController {
         config.contentInsets = NSDirectionalEdgeInsets(top: 18, leading: 20, bottom: 18, trailing: 20)
         reserve.configuration = config
         reserve.addTarget(self, action: #selector(previewReservation), for: .touchUpInside)
-        let notice = Theme.label("Demo only. No payment or real reservation is made. Prices and vehicle specifications are illustrative. Changes reset when the app restarts.", style: .footnote, color: .secondaryLabel)
+        let notice = Theme.label("Demo app. Prices are examples. No real bookings or payments. Changes reset when the app restarts.", style: .footnote, color: .secondaryLabel)
         let stack = Theme.stack([art, title, tagline, specs, included, duration, totalLabel, reserve, notice], spacing: 22)
         scroll.addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -79,14 +79,14 @@ final class CarDetailViewController: UIViewController {
     @objc private func updateQuote() {
         let count = Int(days.value)
         durationLabel.text = "\(count) \(count == 1 ? "day" : "days")"
-        totalLabel.text = "$\(car.price * count) estimated total"
+        totalLabel.text = "Total: \(RentalPrice.format(car.price * count))"
         days.accessibilityValue = "\(count) \(count == 1 ? "day" : "days")"
     }
 
     @objc private func previewReservation() {
         let count = Int(days.value)
-        let alert = UIAlertController(title: "Your next drive", message: "\(car.name)\n\(count) \(count == 1 ? "day" : "days") · $\(car.price * count)\n\nThis is a preview. No booking has been made.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Keep exploring", style: .default))
+        let alert = UIAlertController(title: "Rental details", message: "\(car.name)\n\(count) \(count == 1 ? "day" : "days")\nTotal: \(RentalPrice.format(car.price * count))\n\nNo booking or payment was made.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
 }

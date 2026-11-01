@@ -4,6 +4,8 @@
 
 - Parsed all eight application Swift files and the XCTest Swift file using the tree-sitter Swift grammar; no syntax errors were reported. This is syntax parsing, not Swift compiler type checking.
 - Parsed the OpenStep Xcode project and checked object-reference integrity, app/test source membership, target references, and scheme buildable references.
+- Checked that the renamed `CarRental` target, shared scheme, test module, test host, and install script use the same app product. Checked `CFBundleDisplayName` and `CFBundleName` are both `Car Rental`.
+- Checked all price displays use the shared KZT formatter, the 12 sample daily prices are stored in KZT, and the UI contains no USD price labels. Price formatting and totals still need the manual simulator checks in `SimulatorRecording.md`.
 - Parsed `Info.plist` and the shared scheme as XML. Verified that the scene manifest maps the application role to `SceneDelegate`, that its configuration name matches the AppDelegate callback, and that `SceneDelegate.swift` belongs to the app's Sources build phase. No storyboards are used.
 - Checked both Mac helper scripts with `bash -n`.
 - Checked patch whitespace with `git diff --check`.

@@ -7,10 +7,10 @@ final class FleetViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Your fleet"
+        title = "Car list"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = editButtonItem
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Restore", style: .plain, target: self, action: #selector(restore))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(restore))
         view.backgroundColor = .systemGroupedBackground
         tableView.dataSource = self
         tableView.delegate = self
@@ -39,7 +39,7 @@ final class FleetViewController: UIViewController, UITableViewDataSource, UITabl
         guard !isMoving else { return }
         if store.cars.isEmpty { setEditing(false, animated: false) }
         tableView.reloadData()
-        let empty = Theme.label("Your fleet is empty.\nTap Restore to bring back all 12 cars.", style: .headline, color: .secondaryLabel)
+        let empty = Theme.label("No cars in the list.\nTap Reset to show all 12 cars.", style: .headline, color: .secondaryLabel)
         empty.textAlignment = .center
         tableView.backgroundView = store.cars.isEmpty ? empty : nil
         editButtonItem.isEnabled = !store.cars.isEmpty
@@ -74,7 +74,7 @@ final class FleetViewController: UIViewController, UITableViewDataSource, UITabl
     // 5. Footers explain each category and how to recover an empty section.
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         let category = CarCategory.allCases[section]
-        return store.cars(in: category).isEmpty ? "No cars in this category. Tap Restore to reset the demo." : category.subtitle
+        return store.cars(in: category).isEmpty ? "No cars of this type. Tap Reset to show all cars." : category.subtitle
     }
 
     // 6. Self-sizing rows accommodate long model names and Dynamic Type.

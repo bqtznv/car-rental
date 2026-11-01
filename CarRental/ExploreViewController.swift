@@ -2,7 +2,7 @@ import UIKit
 
 final class ExploreViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     private let store = FleetStore.shared
-    private let filters = UISegmentedControl(items: ["All", "City", "Electric", "Adventure"])
+    private let filters = UISegmentedControl(items: ["All"] + CarCategory.allCases.map(\.rawValue))
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private var cars: [Car] {
         guard filters.selectedSegmentIndex > 0 else { return store.cars }
@@ -11,13 +11,13 @@ final class ExploreViewController: UIViewController, UICollectionViewDataSource,
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Open Road"
+        title = "Car Rental"
         view.backgroundColor = .systemGroupedBackground
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Restore", style: .plain, target: self, action: #selector(restore))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(restore))
         filters.selectedSegmentIndex = 0
         filters.addTarget(self, action: #selector(filterChanged), for: .valueChanged)
-        filters.accessibilityLabel = "Filter fleet by category"
+        filters.accessibilityLabel = "Choose a car type"
         collectionView.backgroundColor = .systemGroupedBackground
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -58,7 +58,7 @@ final class ExploreViewController: UIViewController, UICollectionViewDataSource,
     @objc private func restore() { store.restore() }
     @objc private func reload() {
         collectionView.reloadData()
-        let empty = Theme.label("No cars here yet.\nTap Restore to reset the demo fleet.", style: .headline, color: .secondaryLabel)
+        let empty = Theme.label("No cars here.\nTap Reset to show all 12 cars.", style: .headline, color: .secondaryLabel)
         empty.textAlignment = .center
         collectionView.backgroundView = cars.isEmpty ? empty : nil
     }

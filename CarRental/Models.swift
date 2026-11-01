@@ -1,14 +1,32 @@
 import UIKit
 
 enum CarCategory: String, CaseIterable {
-    case city = "City", electric = "Electric", adventure = "Adventure"
+    case city = "City", electric = "Electric", adventure = "Big cars"
 
     var subtitle: String {
         switch self {
-        case .city: return "Easy parking. Effortless everyday trips."
-        case .electric: return "Quiet drives with charging included."
-        case .adventure: return "Room for people, bags, and new places."
+        case .city: return "Small cars for trips around town."
+        case .electric: return "Electric cars with a charger included."
+        case .adventure: return "More room for people and bags."
         }
+    }
+}
+
+enum RentalPrice {
+    private static let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "en_KZ")
+        formatter.numberStyle = .decimal
+        formatter.usesGroupingSeparator = true
+        formatter.groupingSeparator = " "
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 0
+        return formatter
+    }()
+
+    static func format(_ amount: Int) -> String {
+        let number = formatter.string(from: NSNumber(value: amount)) ?? String(amount)
+        return "\(number) KZT"
     }
 }
 
@@ -22,7 +40,7 @@ struct Car: Identifiable {
     let color: UIColor
     let tagline: String
     var symbol: String { category == .adventure ? "suv.side.fill" : "car.side.fill" }
-    var dailyPrice: String { "$\(price) / day" }
+    var dailyPrice: String { "\(RentalPrice.format(price)) / day" }
 }
 
 final class FleetStore {
@@ -65,17 +83,17 @@ final class FleetStore {
     private func announce() { NotificationCenter.default.post(name: Self.didChange, object: self) }
 
     static let seed: [Car] = [
-        Car(id: "mini", name: "MINI Cooper", category: .city, price: 49, seats: 4, range: "Automatic · Petrol", color: .systemOrange, tagline: "Small footprint. Big personality."),
-        Car(id: "golf", name: "Volkswagen Golf", category: .city, price: 55, seats: 5, range: "Automatic · Petrol", color: .systemBlue, tagline: "Your dependable city companion."),
-        Car(id: "yaris", name: "Toyota Yaris", category: .city, price: 42, seats: 5, range: "Automatic · Hybrid", color: .systemRed, tagline: "Make every city mile count."),
-        Car(id: "a3", name: "Audi A3", category: .city, price: 69, seats: 5, range: "Automatic · Petrol", color: .systemIndigo, tagline: "A little more comfort for your commute."),
-        Car(id: "model3", name: "Tesla Model 3", category: .electric, price: 89, seats: 5, range: "Up to 440 km · Electric", color: .systemTeal, tagline: "A fresh perspective on the open road."),
-        Car(id: "ioniq", name: "Hyundai IONIQ 5", category: .electric, price: 85, seats: 5, range: "Up to 450 km · Electric", color: .systemMint, tagline: "More space for a quieter journey."),
-        Car(id: "leaf", name: "Nissan Leaf", category: .electric, price: 59, seats: 5, range: "Up to 270 km · Electric", color: .systemGreen, tagline: "An easy introduction to electric."),
-        Car(id: "polestar", name: "Polestar 2", category: .electric, price: 95, seats: 5, range: "Up to 470 km · Electric", color: .systemCyan, tagline: "Thoughtful design at every turn."),
-        Car(id: "rav4", name: "Toyota RAV4", category: .adventure, price: 79, seats: 5, range: "Automatic · Hybrid", color: .systemBrown, tagline: "Take the scenic route home."),
-        Car(id: "defender", name: "Land Rover Defender", category: .adventure, price: 139, seats: 7, range: "Automatic · Diesel", color: .systemGreen, tagline: "Bring everyone. Leave ordinary behind."),
-        Car(id: "cx5", name: "Mazda CX-5", category: .adventure, price: 75, seats: 5, range: "Automatic · Petrol", color: .systemPurple, tagline: "Weekend escapes, beautifully simple."),
-        Car(id: "outback", name: "Subaru Outback", category: .adventure, price: 82, seats: 5, range: "Automatic · AWD", color: .systemBlue, tagline: "Pack your bags and follow your curiosity.")
+        Car(id: "mini", name: "MINI Cooper", category: .city, price: 25_000, seats: 4, range: "Automatic · Petrol", color: .systemOrange, tagline: "A small car for city trips."),
+        Car(id: "golf", name: "Volkswagen Golf", category: .city, price: 28_000, seats: 5, range: "Automatic · Petrol", color: .systemBlue, tagline: "A comfortable car for everyday use."),
+        Car(id: "yaris", name: "Toyota Yaris", category: .city, price: 22_000, seats: 5, range: "Automatic · Hybrid", color: .systemRed, tagline: "An easy car to park and drive."),
+        Car(id: "a3", name: "Audi A3", category: .city, price: 35_000, seats: 5, range: "Automatic · Petrol", color: .systemIndigo, tagline: "A small car with extra comfort."),
+        Car(id: "model3", name: "Tesla Model 3", category: .electric, price: 45_000, seats: 5, range: "Up to 440 km · Electric", color: .systemTeal, tagline: "An electric car for longer trips."),
+        Car(id: "ioniq", name: "Hyundai IONIQ 5", category: .electric, price: 42_000, seats: 5, range: "Up to 450 km · Electric", color: .systemMint, tagline: "An electric car with more space."),
+        Car(id: "leaf", name: "Nissan Leaf", category: .electric, price: 30_000, seats: 5, range: "Up to 270 km · Electric", color: .systemGreen, tagline: "An electric car for city trips."),
+        Car(id: "polestar", name: "Polestar 2", category: .electric, price: 48_000, seats: 5, range: "Up to 470 km · Electric", color: .systemCyan, tagline: "A comfortable electric car."),
+        Car(id: "rav4", name: "Toyota RAV4", category: .adventure, price: 40_000, seats: 5, range: "Automatic · Hybrid", color: .systemBrown, tagline: "More room for family trips."),
+        Car(id: "defender", name: "Land Rover Defender", category: .adventure, price: 70_000, seats: 7, range: "Automatic · Diesel", color: .systemGreen, tagline: "Seven seats and plenty of space."),
+        Car(id: "cx5", name: "Mazda CX-5", category: .adventure, price: 38_000, seats: 5, range: "Automatic · Petrol", color: .systemPurple, tagline: "A big car for weekend trips."),
+        Car(id: "outback", name: "Subaru Outback", category: .adventure, price: 41_000, seats: 5, range: "Automatic · All-wheel drive", color: .systemBlue, tagline: "Extra space for people and bags.")
     ]
 }

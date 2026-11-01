@@ -1,6 +1,6 @@
 # UIKit delegate and data source checklist
 
-All views are created in Swift with Auto Layout. The initial fleet contains 12 distinct vehicles: four City, four Electric, and four Adventure cars. Both screens display the same shared data, so edits synchronize between tabs.
+All views are created in Swift with Auto Layout. The app starts with 12 cars: four in City, four in Electric, and four in Big cars. Both screens display the same shared data, so edits synchronize between tabs.
 
 ## UITableView — 19 methods
 
@@ -8,7 +8,7 @@ Implementation: `CarRental/FleetViewController.swift`. These are actual `UITable
 
 | # | Method | Purpose / demonstration |
 | --- | --- | --- |
-| 1 | `numberOfSections(in:)` | Three category sections in Fleet. |
+| 1 | `numberOfSections(in:)` | Three category sections in Car list. |
 | 2 | `tableView(_:numberOfRowsInSection:)` | Four cars per category initially; tracks deletion. |
 | 3 | `tableView(_:cellForRowAt:)` | Configures reusable custom cells with symbol, name, specs, price, and saved state. |
 | 4 | `tableView(_:titleForHeaderInSection:)` | Category name and live row count. |
@@ -50,6 +50,6 @@ Implementation: `CarRental/ExploreViewController.swift`. Layout methods conform 
 
 ## Additional behaviors
 
-Cells use SF Symbols bundled with iOS, colored illustration backgrounds, rounded corners, typography, and layout spacing. No image downloads are required. The detail view uses a stepper to calculate a meaningful daily-rate total and displays an explicit demo confirmation.
+Cells use SF Symbols bundled with iOS, colored illustration backgrounds, rounded corners, typography, and layout spacing. No image downloads are required. The detail view lets you choose the number of days and shows the total in KZT. The rental summary uses the same price format.
 
 Six XCTest cases validate model behavior, and a seventh checks the scene window, visible collection cards, and both catalogs at startup. Manual simulator checks cover UIKit layout, navigation, swipe interactions, edit controls, and screen synchronization. See `SimulatorRecording.md`.
