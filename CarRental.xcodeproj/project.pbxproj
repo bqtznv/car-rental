@@ -71,6 +71,16 @@
 			"path" = "Theme.swift";
 			"sourceTree" = "<group>";
 		};
+		"4A773E63CD4BFAB804764554" = {
+			"isa" = "PBXFileReference";
+			"lastKnownFileType" = "sourcecode.swift";
+			"path" = "SceneDelegate.swift";
+			"sourceTree" = "<group>";
+		};
+		"617FCFE05DA5BE9909DC4C01" = {
+			"isa" = "PBXBuildFile";
+			"fileRef" = "4A773E63CD4BFAB804764554";
+		};
 		"76441547264C0EC34F8DD3F9" = {
 			"isa" = "PBXBuildFile";
 			"fileRef" = "09F61F0FC73D14B7A5181A70";
@@ -115,6 +125,7 @@
 				"954DD04ED71F15B435173132",
 				"8BF4A28E43F6CF370D3EE1C2",
 				"09F61F0FC73D14B7A5181A70",
+				"4A773E63CD4BFAB804764554",
 				"59BD0A3FF43B32849B319E64",
 			);
 			"path" = "CarRental";
@@ -157,6 +168,7 @@
 				"4E789AC7C92DA5FFE065D24B",
 				"E22D430D1ABEAD104B65960F",
 				"76441547264C0EC34F8DD3F9",
+				"617FCFE05DA5BE9909DC4C01",
 			);
 			"runOnlyForDeploymentPostprocessing" = 0;
 		};

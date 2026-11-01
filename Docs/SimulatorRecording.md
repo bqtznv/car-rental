@@ -19,6 +19,6 @@ This recording must be produced on a Mac with Xcode; it is not included in the L
 - Toggle light/dark appearance and enable Reduce Motion; confirm contrast and press feedback remain usable.
 - Enable VoiceOver and check card, row, save-button, and duration-stepper announcements.
 - Relaunch: the original 12-car in-memory demo fleet should return.
-- Confirm the Xcode test report shows all six tests executed, not skipped or zero tests.
+- Confirm the Xcode test report shows all seven tests executed, including `AppLaunchTests`, not skipped or zero tests.
 
 The assignment's successful-build, crash-free runtime, and simulator-recording requirements remain unverified until these Mac checks are completed.

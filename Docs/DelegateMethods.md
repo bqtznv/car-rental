@@ -52,4 +52,4 @@ Implementation: `CarRental/ExploreViewController.swift`. Layout methods conform 
 
 Cells use SF Symbols bundled with iOS, colored illustration backgrounds, rounded corners, typography, and layout spacing. No image downloads are required. The detail view uses a stepper to calculate a meaningful daily-rate total and displays an explicit demo confirmation.
 
-The six XCTest cases validate model behavior; manual simulator checks cover UIKit layout, navigation, swipe interactions, edit controls, and screen synchronization. See `SimulatorRecording.md`.
+Six XCTest cases validate model behavior, and a seventh checks the scene window, visible collection cards, and both catalogs at startup. Manual simulator checks cover UIKit layout, navigation, swipe interactions, edit controls, and screen synchronization. See `SimulatorRecording.md`.
